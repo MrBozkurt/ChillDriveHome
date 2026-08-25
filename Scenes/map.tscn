@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c8urwykuk8eia"]
+
+[ext_resource type="PackedScene" uid="uid://bra1doyoqm5h" path="res://Scenes/village.tscn" id="1_ci6au"]
+[ext_resource type="PackedScene" uid="uid://b6rpropmlpc0d" path="res://Scenes/car.tscn" id="2_26yhd"]
+
+[node name="Map" type="Node3D" unique_id=156900698]
+
+[node name="Village" parent="." unique_id=62636949 instance=ExtResource("1_ci6au")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=342467860]
+transform = Transform3D(0.8244539, -0.46149307, 0.3275666, 0, 0.5788121, 0.81546104, -0.5659292, -0.67231005, 0.47720397, 0, 178, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=401207345]
+transform = Transform3D(-0.6893805, 0.59071946, -0.4192912, 2.8862345e-08, 0.5788122, 0.8154609, 0.72439927, 0.5621628, -0.3990219, -4.0874453, 178, 0)
+
+[node name="Car" parent="." unique_id=1712536071 instance=ExtResource("2_26yhd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.18452, 14.8574705, 85.72186)
+script = null

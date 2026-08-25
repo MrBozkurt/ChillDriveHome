@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b6rpropmlpc0d"]
 
-[ext_resource type="Script" uid="uid://bf44ibcmroqpd" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
+[ext_resource type="Script" uid="uid://bb6cyjrtvagee" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hb7yh"]
 
@@ -19,6 +19,8 @@ material = SubResource("StandardMaterial3D_l3ikr")
 height = 0.2
 
 [node name="Car" type="VehicleBody3D" unique_id=1712536071]
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 0.1, 0)
 script = ExtResource("1_wqo35")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1064250826]
@@ -32,7 +34,7 @@ shape = SubResource("BoxShape3D_3nnyw")
 [node name="VehicleWheel3D" type="VehicleWheel3D" parent="." unique_id=531845782]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.5, 0.5, 1.2)
 use_as_steering = true
-suspension_stiffness = 50.0
+suspension_stiffness = 100.0
 damping_compression = 2.0
 damping_relaxation = 3.0
 
@@ -43,7 +45,7 @@ mesh = SubResource("CylinderMesh_3nnyw")
 [node name="VehicleWheel3D2" type="VehicleWheel3D" parent="." unique_id=81010295]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.5, 0.5, -1.2)
 use_as_steering = true
-suspension_stiffness = 50.0
+suspension_stiffness = 100.0
 damping_compression = 2.0
 damping_relaxation = 3.0
 
@@ -54,7 +56,7 @@ mesh = SubResource("CylinderMesh_3nnyw")
 [node name="VehicleWheel3D3" type="VehicleWheel3D" parent="." unique_id=657842958]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5, 0.5, -1.2)
 use_as_traction = true
-suspension_stiffness = 50.0
+suspension_stiffness = 100.0
 damping_compression = 2.0
 damping_relaxation = 3.0
 
@@ -65,7 +67,7 @@ mesh = SubResource("CylinderMesh_3nnyw")
 [node name="VehicleWheel3D4" type="VehicleWheel3D" parent="." unique_id=89741351]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5, 0.5, 1.2)
 use_as_traction = true
-suspension_stiffness = 50.0
+suspension_stiffness = 100.0
 damping_compression = 2.0
 damping_relaxation = 3.0
 

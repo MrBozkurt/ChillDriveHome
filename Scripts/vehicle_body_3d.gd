@@ -11,6 +11,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	steering = move_toward(steering, Input.get_axis("right", "left") * MAX_STEER, delta * 2.5)
+	steering = move_toward(steering, Input.get_axis("right", "left") * MAX_STEER, delta * 1.0)
 	engine_force = Input.get_axis("back", "foward") * ENGINE_POWER
 	brake = Input.get_action_strength("brake") * BRAKE_FORCE

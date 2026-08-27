@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6rpropmlpc0d"]
 
-[ext_resource type="Script" uid="uid://bf44ibcmroqpd" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
-[ext_resource type="PackedScene" uid="uid://bpu37fa2qhugt" path="res://Assets/car200.glb" id="2_go66d"]
+[ext_resource type="Script" uid="uid://bb6cyjrtvagee" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
+[ext_resource type="PackedScene" uid="uid://bhhb8edwki3pf" path="res://Assets/car200.glb" id="2_go66d"]
 [ext_resource type="ArrayMesh" uid="uid://brqf8qmam08yh" path="res://Resources/wheel_model.tres" id="3_1sfmx"]
 
 [sub_resource type="Curve" id="Curve_go66d"]
@@ -18,7 +18,7 @@ center_of_mass = Vector3(0, 0.1, 0)
 script = ExtResource("1_wqo35")
 POWER_CURVE = SubResource("Curve_go66d")
 
-[node name="car200" parent="." unique_id=1174047636 instance=ExtResource("2_go66d")]
+[node name="car201" parent="." unique_id=1575413693 instance=ExtResource("2_go66d")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.13, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=760345495]
@@ -28,7 +28,7 @@ shape = SubResource("BoxShape3D_3nnyw")
 [node name="VehicleWheel3D" type="VehicleWheel3D" parent="." unique_id=531845782]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.3112789, 0.28067797, 0.7472398)
 use_as_steering = true
-wheel_radius = 0.28
+wheel_radius = 0.3
 suspension_stiffness = 100.0
 damping_compression = 2.0
 damping_relaxation = 3.0
@@ -40,7 +40,7 @@ mesh = ExtResource("3_1sfmx")
 [node name="VehicleWheel3D2" type="VehicleWheel3D" parent="." unique_id=81010295]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.311, 0.28076404, -0.747)
 use_as_steering = true
-wheel_radius = 0.28
+wheel_radius = 0.3
 suspension_stiffness = 100.0
 damping_compression = 2.0
 damping_relaxation = 3.0
@@ -52,7 +52,7 @@ mesh = ExtResource("3_1sfmx")
 [node name="VehicleWheel3D3" type="VehicleWheel3D" parent="." unique_id=657842958]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.215, 0.28076404, -0.747)
 use_as_traction = true
-wheel_radius = 0.28
+wheel_radius = 0.3
 suspension_stiffness = 100.0
 damping_compression = 2.0
 damping_relaxation = 3.0
@@ -64,7 +64,7 @@ mesh = ExtResource("3_1sfmx")
 [node name="VehicleWheel3D4" type="VehicleWheel3D" parent="." unique_id=89741351]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.215, 0.28076404, 0.747)
 use_as_traction = true
-wheel_radius = 0.28
+wheel_radius = 0.3
 suspension_stiffness = 100.0
 damping_compression = 2.0
 damping_relaxation = 3.0

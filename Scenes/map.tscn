@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://c8urwykuk8eia"]
 
 [ext_resource type="PackedScene" uid="uid://bra1doyoqm5h" path="res://Scenes/village.tscn" id="1_ci6au"]
-[ext_resource type="Script" uid="uid://dpvas6ktgc1vr" path="res://Scripts/map.gd" id="1_myvm1"]
+[ext_resource type="Script" uid="uid://bm34aeffj5v0k" path="res://Scripts/map.gd" id="1_myvm1"]
 [ext_resource type="PackedScene" uid="uid://b6rpropmlpc0d" path="res://Scenes/car.tscn" id="2_26yhd"]
-[ext_resource type="PackedScene" uid="uid://d3k01b0pbeo8h" path="res://Scenes/npc_car.tscn" id="3_p3ir5"]
 
 [sub_resource type="Curve3D" id="Curve3D_3nnyw"]
 closed = true
@@ -35,5 +34,3 @@ debug_custom_color = Color(0.072842635, 0.072842635, 0.072842635, 1)
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1301053760]
 transform = Transform3D(0.07684395, 0, -0.99702543, 0, 0.99996746, 0, 0.99701244, 0, 0.07684495, 35.27513, 1.5994141, 43.540684)
 v_offset = 0.2
-
-[node name="NpcCar" parent="Path3D/PathFollow3D" unique_id=1474294612 instance=ExtResource("3_p3ir5")]

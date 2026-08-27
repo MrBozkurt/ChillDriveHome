@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d3k01b0pbeo8h"]
 
-[ext_resource type="Script" uid="uid://cf75jkarjrsww" path="res://Scripts/npc_car.gd" id="1_xcuj3"]
+[ext_resource type="Script" uid="uid://2r6agijpq78a" path="res://Scripts/npc_car.gd" id="1_xcuj3"]
 
 [sub_resource type="Curve" id="Curve_quavu"]
 _limits = [0.0, 3.0, 0.0, 23.0]
@@ -8,8 +8,8 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(13.110001, 1.6179776), 0.3702466
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_xcuj3"]
-_limits = [0.0, 50.0, 0.0, 30.0]
-_data = [Vector2(0, 50), 0.0, -1.6666667, 0, 1, Vector2(30, 0), -1.6666667, 0.0, 1, 0]
+_limits = [0.0, 50.0, 0.0, 40.0]
+_data = [Vector2(0, 50), 0.0, -1.25, 0, 1, Vector2(40, 0), -1.25, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hb7yh"]
@@ -30,10 +30,10 @@ height = 0.2
 
 [node name="NpcCar" type="VehicleBody3D" unique_id=1474294612]
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, 0.1, 0)
 script = ExtResource("1_xcuj3")
 steering_curve = SubResource("Curve_quavu")
 power_curve = SubResource("Curve_xcuj3")
+minimum_pursuit_distance = 7.0
 
 [node name="FrontMarker" type="Marker3D" parent="." unique_id=223653029]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
@@ -84,9 +84,9 @@ mesh = SubResource("CylinderMesh_3nnyw")
 
 [node name="DebugCam" type="Camera3D" parent="." unique_id=1265596843]
 transform = Transform3D(1, 0, 0, 0, 0.9563048, 0.2923717, 0, -0.2923717, 0.9563048, 0, 2.8515625, 4.052347)
+visible = false
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1322065695]
-path_max_distance = 20.01
 debug_enabled = true
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_target_reached"]

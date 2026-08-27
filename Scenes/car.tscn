@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://b6rpropmlpc0d"]
 
 [ext_resource type="Script" uid="uid://bb6cyjrtvagee" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
-[ext_resource type="PackedScene" uid="uid://slpv25m0jo3b" path="res://Assets/car200.glb" id="2_go66d"]
+[ext_resource type="PackedScene" uid="uid://bpu37fa2qhugt" path="res://Assets/car200(2).glb" id="2_go66d"]
+
+[sub_resource type="Curve" id="Curve_go66d"]
+_limits = [0.0, 100.0, 0.0, 100.0]
+_data = [Vector2(0, 100), 0.0, -1.0, 0, 0, Vector2(100, 0), -1.0, 0.0, 1, 0]
+point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3nnyw"]
 size = Vector3(4.39, 1, 1.65)
@@ -19,9 +24,10 @@ height = 0.2
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0.1, 0)
 script = ExtResource("1_wqo35")
+POWER_CURVE = SubResource("Curve_go66d")
 
-[node name="car200" parent="." unique_id=530863630 instance=ExtResource("2_go66d")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.13623595, 0.11821234)
+[node name="car200(2)" parent="." unique_id=1174047636 instance=ExtResource("2_go66d")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.13, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=760345495]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6744556, 0)
@@ -79,3 +85,4 @@ mesh = SubResource("CylinderMesh_3nnyw")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=732807977]
 transform = Transform3D(-4.222196e-08, 0.25881907, -0.9659258, 1.131334e-08, 0.9659259, 0.25881907, 1, 0, -4.371139e-08, -5, 3, 0)
+current = true

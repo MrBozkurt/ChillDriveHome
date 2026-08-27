@@ -1,9 +1,20 @@
 [gd_scene format=3 uid="uid://c8urwykuk8eia"]
 
 [ext_resource type="PackedScene" uid="uid://bra1doyoqm5h" path="res://Scenes/village.tscn" id="1_ci6au"]
+[ext_resource type="Script" uid="uid://dpvas6ktgc1vr" path="res://Scripts/map.gd" id="1_myvm1"]
 [ext_resource type="PackedScene" uid="uid://b6rpropmlpc0d" path="res://Scenes/car.tscn" id="2_26yhd"]
+[ext_resource type="PackedScene" uid="uid://d3k01b0pbeo8h" path="res://Scenes/npc_car.tscn" id="3_p3ir5"]
+
+[sub_resource type="Curve3D" id="Curve3D_3nnyw"]
+closed = true
+_data = {
+"points": PackedVector3Array(-11.19725, 0, 0.86301804, 11.19725, 0, -0.86301804, 35.27513, 1.3994141, 43.540684, -1.7165222, 0, 4.893173, 1.7165222, 0, -4.893173, 60.709137, -0.00036621094, 34.732136, 2.5177612, 0, 2.7633324, -2.5177612, 0, -2.7633324, 56.358215, -0.00036621094, 20.863522, -0.49679565, 0, 8.96669, 0.49679565, 0, -8.96669, 39.90622, -0.00036621094, -0.6192398, -1.1638794, 3.1471252e-05, 3.8950348, 1.1638794, -3.1471252e-05, -3.8950348, 48.775925, -0.0003976822, -15.769836, 2.748932, 0, 3.363205, -2.748932, 0, -3.363205, 46.374817, -0.00036621094, -31.210571, 6.0193176, 0, -0.091423035, -6.0193176, 0, 0.091423035, 31.02324, 0.00036621094, -36.495537, 6.1299744, -0.8642199, -1.2283554, -6.1299744, 0.8642199, 1.2283554, 2.3293304, 1.9144287, -31.548088, 3.6972961, -0.77948856, -2.3414612, -3.6972961, 0.77948856, 2.3414612, -32.829926, 9.075006, -23.959587, 2.5239563, -0.038051605, -4.677109, -2.5239563, 0.038051605, 4.677109, -40.619873, 10.1813965, -15.939987, 1.1294556, 0.19455147, -3.133316, -1.1294556, -0.19455147, 3.133316, -45.73465, 9.911865, -5.289055, 0.15063477, 0.23465014, -1.2624512, -0.15063477, -0.23465014, 1.2624512, -47.747986, 6.958618, 14.844158, -6.0149384, 1.2952509, -3.1985054, 6.0149384, -1.2952509, 3.1985054, -36.674713, 2.994873, 28.182411, -9.879776, 0, -1.6279564, 9.879776, 0, 1.6279564, 2.0817413, -0.00036621094, 39.759014),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, -0.16405307, -0.1333146, 0, 0, 0, 0)
+}
+point_count = 14
 
 [node name="Map" type="Node3D" unique_id=156900698]
+script = ExtResource("1_myvm1")
 
 [node name="Village" parent="." unique_id=62636949 instance=ExtResource("1_ci6au")]
 
@@ -15,3 +26,14 @@ transform = Transform3D(-0.6893805, 0.59071946, -0.4192912, 2.8862345e-08, 0.578
 
 [node name="Car" parent="." unique_id=1712536071 instance=ExtResource("2_26yhd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138.5191, -0.0004043579, 5.137108)
+
+[node name="Path3D" type="Path3D" parent="." unique_id=408023263]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -213, 0, -64)
+curve = SubResource("Curve3D_3nnyw")
+debug_custom_color = Color(0.072842635, 0.072842635, 0.072842635, 1)
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1301053760]
+transform = Transform3D(0.07684395, 0, -0.99702543, 0, 0.99996746, 0, 0.99701244, 0, 0.07684495, 35.27513, 1.5994141, 43.540684)
+v_offset = 0.2
+
+[node name="NpcCar" parent="Path3D/PathFollow3D" unique_id=1474294612 instance=ExtResource("3_p3ir5")]

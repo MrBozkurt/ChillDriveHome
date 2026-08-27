@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://b6rpropmlpc0d"]
 
-[ext_resource type="Script" uid="uid://bb6cyjrtvagee" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
-[ext_resource type="PackedScene" uid="uid://bpu37fa2qhugt" path="res://Assets/car200(2).glb" id="2_go66d"]
+[ext_resource type="Script" uid="uid://bf44ibcmroqpd" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
+[ext_resource type="PackedScene" uid="uid://bpu37fa2qhugt" path="res://Assets/car200.glb" id="2_go66d"]
+[ext_resource type="ArrayMesh" uid="uid://brqf8qmam08yh" path="res://Resources/wheel_model.tres" id="3_1sfmx"]
 
 [sub_resource type="Curve" id="Curve_go66d"]
 _limits = [0.0, 100.0, 0.0, 100.0]
@@ -11,22 +12,13 @@ point_count = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_3nnyw"]
 size = Vector3(4.39, 1, 1.65)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3ikr"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_3nnyw"]
-material = SubResource("StandardMaterial3D_l3ikr")
-top_radius = 0.28
-bottom_radius = 0.28
-height = 0.2
-
 [node name="Car" type="VehicleBody3D" unique_id=1712536071]
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0.1, 0)
 script = ExtResource("1_wqo35")
 POWER_CURVE = SubResource("Curve_go66d")
 
-[node name="car200(2)" parent="." unique_id=1174047636 instance=ExtResource("2_go66d")]
+[node name="car200" parent="." unique_id=1174047636 instance=ExtResource("2_go66d")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.13, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=760345495]
@@ -42,8 +34,8 @@ damping_compression = 2.0
 damping_relaxation = 3.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleWheel3D" unique_id=1083379903]
-transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_3nnyw")
+transform = Transform3D(1.910685e-15, 4.371138e-08, -0.99999994, 0.9999999, -4.371138e-08, 0, -4.3711385e-08, -0.99999994, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("3_1sfmx")
 
 [node name="VehicleWheel3D2" type="VehicleWheel3D" parent="." unique_id=81010295]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.311, 0.28076404, -0.747)
@@ -54,8 +46,8 @@ damping_compression = 2.0
 damping_relaxation = 3.0
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="VehicleWheel3D2" unique_id=1530426650]
-transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_3nnyw")
+transform = Transform3D(1.9106853e-15, 4.3711385e-08, 0.99999994, 0.9999999, -4.371138e-08, 0, 4.3711385e-08, 0.99999994, -4.3711392e-08, 0, 0, 0)
+mesh = ExtResource("3_1sfmx")
 
 [node name="VehicleWheel3D3" type="VehicleWheel3D" parent="." unique_id=657842958]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.215, 0.28076404, -0.747)
@@ -66,8 +58,8 @@ damping_compression = 2.0
 damping_relaxation = 3.0
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="VehicleWheel3D3" unique_id=343605459]
-transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_3nnyw")
+transform = Transform3D(1.9106853e-15, 4.3711385e-08, 0.99999994, 0.9999999, -4.371138e-08, 0, 4.3711385e-08, 0.99999994, -4.3711392e-08, 0, 0, 0)
+mesh = ExtResource("3_1sfmx")
 
 [node name="VehicleWheel3D4" type="VehicleWheel3D" parent="." unique_id=89741351]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.215, 0.28076404, 0.747)
@@ -78,8 +70,8 @@ damping_compression = 2.0
 damping_relaxation = 3.0
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="VehicleWheel3D4" unique_id=409038345]
-transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_3nnyw")
+transform = Transform3D(1.910685e-15, 4.371138e-08, -0.99999994, 0.9999999, -4.371138e-08, 0, -4.3711385e-08, -0.99999994, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("3_1sfmx")
 
 [node name="CameraPivot" type="Marker3D" parent="." unique_id=2110000980]
 

@@ -75,3 +75,14 @@ mesh = ExtResource("3_1sfmx")
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=732807977]
 transform = Transform3D(-4.222196e-08, 0.25881907, -0.9659258, 1.131334e-08, 0.9659259, 0.25881907, 1, 0, -4.371139e-08, -5, 3, 0)
 current = true
+
+[node name="GripPenaltyCooldown" type="Timer" parent="." unique_id=38687900]
+wait_time = 5.0
+one_shot = true
+
+[node name="PowerPenaltyCooldown" type="Timer" parent="." unique_id=1674290317]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="GripPenaltyCooldown" to="." method="_on_grip_penalty_cooldown_timeout"]
+[connection signal="timeout" from="PowerPenaltyCooldown" to="." method="_on_power_penalty_cooldown_timeout"]

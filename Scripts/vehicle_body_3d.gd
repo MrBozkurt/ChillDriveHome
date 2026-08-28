@@ -23,7 +23,9 @@ extends VehicleBody3D
 @onready var grip_penalty_cooldown: Timer = $GripPenaltyCooldown
 @onready var power_penalty_cooldown: Timer = $PowerPenaltyCooldown
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
-@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $EngineSound
+@onready var crash: AudioStreamPlayer3D = $Crash
+@onready var scratch: AudioStreamPlayer3D = $Scratch
 var can_grip_penalized : bool = true
 var can_power_penalized : bool = true
 var last_velocity : Vector3
@@ -38,6 +40,7 @@ func _ready() -> void:
 	max_contacts_reported = 12
 	last_velocity = linear_velocity
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	scratch.stream_paused = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -102,9 +105,14 @@ func power_penalty():
 		var collision_point := (collision_shape_3d.global_basis.inverse() * (state.get_contact_collider_position(i) - collision_shape_3d.global_position))
 		if (collision_point.x > 2) && ((acceleration * 3.6) > collision_speed) && can_power_penalized:
 			print("penalized")
+			crash.play(3.6)
 			power_coefficient *= 0.75
 			can_power_penalized = false
 			power_penalty_cooldown.start()
+	if (acceleration * 3.6) < collision_speed && get_contact_count() > 0 && speed > 1:
+		scratch.stream_paused = false
+	else:
+		scratch.stream_paused = true
 
 func _on_grip_penalty_cooldown_timeout() -> void:
 	can_grip_penalized = true

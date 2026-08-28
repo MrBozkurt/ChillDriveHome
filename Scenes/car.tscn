@@ -1,10 +1,12 @@
 [gd_scene format=4 uid="uid://b6rpropmlpc0d"]
 
-[ext_resource type="Script" uid="uid://bf44ibcmroqpd" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
+[ext_resource type="Script" uid="uid://bb6cyjrtvagee" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
 [ext_resource type="Curve" uid="uid://c5tlvwfvcbsmr" path="res://Resources/car_power_curve.tres" id="2_yi23e"]
 [ext_resource type="ArrayMesh" uid="uid://brqf8qmam08yh" path="res://Resources/wheel_model.tres" id="3_1sfmx"]
-[ext_resource type="PackedScene" uid="uid://dtdac7qqcosg1" path="res://Assets/car200player.glb" id="3_u41r7"]
+[ext_resource type="PackedScene" uid="uid://3vbr53gswx1a" path="res://Assets/car200player.glb" id="3_u41r7"]
 [ext_resource type="AudioStream" uid="uid://bpt1r8sr56vin" path="res://Assets/engine-loop-1-normalized.wav" id="5_u41r7"]
+[ext_resource type="AudioStream" uid="uid://c74v62ksobm2h" path="res://Assets/346299__pauliusi__car-crash_ext.wav" id="6_aky6y"]
+[ext_resource type="AudioStream" uid="uid://ddd5gr6vqby58" path="res://Assets/scratch.wav" id="7_aqss3"]
 
 [sub_resource type="Curve" id="Curve_u41r7"]
 _limits = [0.4, 0.9, 0.0, 100.0]
@@ -553,7 +555,7 @@ engine_pitch_curve = SubResource("Curve_u41r7")
 [node name="car200player" parent="." unique_id=1007938919 instance=ExtResource("3_u41r7")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.13, 0)
 
-[node name="car_003" parent="car200player" index="0" unique_id=1994372232]
+[node name="car_003" parent="car200player" index="0" unique_id=471884577]
 mesh = SubResource("ArrayMesh_u41r7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=760345495]
@@ -623,9 +625,17 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=90120243]
+[node name="EngineSound" type="AudioStreamPlayer3D" parent="." unique_id=90120243]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3073456, 0.45635808, 0)
 stream = ExtResource("5_u41r7")
+volume_db = -16.449
+autoplay = true
+
+[node name="Crash" type="AudioStreamPlayer3D" parent="." unique_id=195653107]
+stream = ExtResource("6_aky6y")
+
+[node name="Scratch" type="AudioStreamPlayer3D" parent="." unique_id=1588814404]
+stream = ExtResource("7_aqss3")
 autoplay = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1341081733]

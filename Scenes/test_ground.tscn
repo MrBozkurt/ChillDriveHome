@@ -44,7 +44,7 @@ size = Vector3(21, 3, 10)
 transform = Transform3D(-0.8582276, -0.5132693, 0, 0.5132693, -0.8582276, 0, 0, 0, 1, 194.93219, 0, -37.646683)
 
 [node name="NpcCar" parent="." unique_id=1474294612 node_paths=PackedStringArray("target_pos") instance=ExtResource("1_quavu")]
-transform = Transform3D(-0.9601764, 0, 0.27939478, 0, 1, 0, -0.27939478, 0, -0.9601764, 196.4081, 0.5, 52.47235)
+transform = Transform3D(0.9986269, 0, 0.05238831, 0, 1, 0, -0.05238831, 0, 0.9986269, 196.4081, 0.5, 52.47235)
 target_pos = NodePath("../Marker3D")
 steer_speed = 1.0
 
@@ -185,7 +185,7 @@ mesh = SubResource("BoxMesh_l3ikr")
 shape = SubResource("BoxShape3D_3nnyw")
 
 [node name="Car" parent="." unique_id=1712536071 instance=ExtResource("2_6h2m2")]
-transform = Transform3D(-0.9659258, 0, 0.25881913, 0, 1, 0, -0.25881913, 0, -0.9659258, 215.91263, 0.63, 51.25903)
+transform = Transform3D(-0.329228, 0, 0.94425046, 0, 1, 0, -0.94425046, 0, -0.329228, 208.29329, 0.6300076, 60.50939)
 
 [editable path="NpcCar"]
 [editable path="Car"]

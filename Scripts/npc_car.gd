@@ -11,7 +11,10 @@ class_name NPCCar
 #Those variables exist to watch whats going on with this node
 @export_category("Watching variables")
 @export var waypoint_position : Vector3 = Vector3.ZERO
-var reached_destination : bool = false
+@export var reached_destination : bool = false
+@export var tracking_mode : bool = false
+@export var tracked_target : Node3D = null
+@export var full_gas_mode : bool = false
 
 @export_category("PID Coefficients")
 @export_range(0.0, 20.0, 0.01) var kp := 0.91 #0.91
@@ -30,11 +33,13 @@ var derivative : float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	navigation_agent_3d.target_position = target_pos.global_position
-	var insanity := 0.8
+	var insanity := randf()
 	if insanity < 0.5:
 		insanity_level = 0
 	elif insanity < 0.75:
 		insanity_level = 1
+		kd += 1.5
+		minimum_pursuit_distance = 0
 	elif insanity < 0.9:
 		insanity_level = 2
 		$InsanityModeDetectors/BrakeCheck/CollisionShape3D.disabled = false
@@ -47,7 +52,9 @@ func _ready() -> void:
 		$InsanityModeDetectors/RearEnd/CollisionShape3D.disabled = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	if tracking_mode && tracked_target != null:
+		navigation_agent_3d.target_position = tracked_target.global_position
 	pid_controller(delta)
 	if reached_destination:
 		brake = 2.0
@@ -82,7 +89,10 @@ func pid_controller(delta: float):
 	var target_steering = clampf(propotion + integral + derivative, -deg_to_rad(max_steering_angle), +deg_to_rad(max_steering_angle))
 	
 	steering = move_toward(steering, target_steering, delta * steer_speed)
-	engine_force = power_curve.sample(linear_velocity.length())
+	if full_gas_mode:
+		engine_force = 1000
+	else:
+		engine_force = power_curve.sample(linear_velocity.length())
 
 func pure_pursuit() -> Vector3:
 	var current_waypoint := navigation_agent_3d.get_next_path_position()
@@ -104,9 +114,18 @@ func _on_brake_check_body_entered(_body: Node3D) -> void:
 	brake = 10
 
 
-func _on_overtake_body_entered(_body: Node3D) -> void:
-	pass # Replace with function body.
+func _on_overtake_body_entered(body: Node3D) -> void:
+	if (global_basis.inverse() * (body.global_position - global_position)).x < 0:
+		steering = max_steering_angle
+	else:
+		steering = -max_steering_angle
 
 
 func _on_rear_end_body_entered(body: Node3D) -> void:
-	pass # Replace with function body.
+	tracking_mode = true
+	tracked_target = body
+	full_gas_mode = true
+	$VehicleWheel3D.wheel_friction_slip = 100
+	$VehicleWheel3D2.wheel_friction_slip = 100
+	$VehicleWheel3D3.wheel_friction_slip = 100
+	$VehicleWheel3D4.wheel_friction_slip = 100

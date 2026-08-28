@@ -194,8 +194,9 @@ visible = false
 transform = Transform3D(0.8244539, -0.46149307, 0.3275666, 0, 0.5788121, 0.81546104, -0.5659292, -0.67231005, 0.47720397, 0, 178, 0)
 shadow_enabled = true
 
-[node name="Car" parent="." unique_id=1712536071 instance=ExtResource("2_26yhd")]
+[node name="Car" parent="." unique_id=1712536071 node_paths=PackedStringArray("path") instance=ExtResource("2_26yhd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250.45392, -0.0004043579, 5.137108)
+path = NodePath("../Arabanın gitmesini düşündüğüm yol")
 
 [node name="Terrain3D" type="Terrain3D" parent="." unique_id=899187983]
 data_directory = "res://Data"

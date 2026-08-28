@@ -21,6 +21,14 @@ func _physics_process(delta: float) -> void:
 	camera_pivot.rotation.y = steering / deg_to_rad(MAX_STEER) * CAMERA_TURN
 	#Speed is multiplied with 3.6 to convert it to km/h
 	var front_vector := global_basis * Vector3.RIGHT
-	angle_of_attack = linear_velocity.angle_to(front_vector)
+	angle_of_attack = linear_velocity.dot(front_vector)
+	#Directional brake logic.
+	#When opposite direction pressed it brakes instead of powering wheels.
+	if angle_of_attack >= 0:
+		engine_force = Input.get_action_strength("foward") * POWER_CURVE.sample(linear_velocity.length() * 3.6)
+		brake = Input.get_action_strength("back") * BRAKE_FORCE
+	else:
+		engine_force = Input.get_action_strength("back") * POWER_CURVE.sample(linear_velocity.length() * 3.6)
+		brake = Input.get_action_strength("foward") * BRAKE_FORCE
 	engine_force = Input.get_axis("back", "foward") * POWER_CURVE.sample(linear_velocity.length() * 3.6)
 	brake = Input.get_action_strength("brake") * BRAKE_FORCE

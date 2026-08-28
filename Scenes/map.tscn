@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://b6rpropmlpc0d" path="res://Scenes/car.tscn" id="2_26yhd"]
 [ext_resource type="Texture2D" uid="uid://b4jwg62bmuqvb" path="res://Assets/2d/green_packed.png" id="4_q0mm3"]
 [ext_resource type="Texture2D" uid="uid://cwqogkgseycsq" path="res://Assets/2d/brown_packed.png" id="5_np2xp"]
+[ext_resource type="PackedScene" uid="uid://bpoo2ewj172uh" path="res://Scenes/Buildings/s2.tscn" id="6_6q3n4"]
+[ext_resource type="PackedScene" uid="uid://dakvxl7dryytu" path="res://Scenes/Buildings/r2.tscn" id="7_4c2oa"]
+[ext_resource type="PackedScene" uid="uid://cdw6i6d8n1o1y" path="res://Scenes/Buildings/s1.tscn" id="8_olcgw"]
 
 [sub_resource type="Gradient" id="Gradient_p3ir5"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -127,6 +130,12 @@ script = ExtResource("1_myvm1")
 
 [node name="Village" parent="." unique_id=62636949 instance=ExtResource("1_ci6au")]
 
+[node name="10-15-8_001" parent="Village" index="4" unique_id=1208472165]
+visible = false
+
+[node name="10-15-8_011" parent="Village" index="12" unique_id=621861661]
+visible = false
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=342467860]
 transform = Transform3D(0.8244539, -0.46149307, 0.3275666, 0, 0.5788121, 0.81546104, -0.5659292, -0.67231005, 0.47720397, 0, 178, 0)
 shadow_enabled = true
@@ -144,5 +153,15 @@ metadata/_edit_lock_ = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1651868178]
 environment = SubResource("Environment_ntw8o")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="WorldEnvironment" unique_id=49406708]
-environment = SubResource("Environment_ntw8o")
+[node name="Buildings" type="Node3D" parent="." unique_id=1368592999]
+
+[node name="s2" parent="Buildings" unique_id=1695701662 instance=ExtResource("6_6q3n4")]
+transform = Transform3D(0.9659257, 0, -0.25881895, 0, 1, 0, 0.25881898, 0, 0.96592563, -18.718555, -0.00012207031, -11.970236)
+
+[node name="r2" parent="Buildings" unique_id=1198197866 instance=ExtResource("7_4c2oa")]
+transform = Transform3D(0.25881907, -4.222196e-08, -0.9659258, 4.222196e-08, 1, -3.2398045e-08, 0.9659258, -3.2398045e-08, 0.25881907, 3.399, 0, -24.814325)
+
+[node name="s1" parent="Buildings" unique_id=1635842261 instance=ExtResource("8_olcgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.76492, -0.00061035156, 9.395193)
+
+[editable path="Village"]

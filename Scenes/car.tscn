@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6rpropmlpc0d"]
 
-[ext_resource type="Script" uid="uid://bf44ibcmroqpd" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
-[ext_resource type="PackedScene" uid="uid://bpu37fa2qhugt" path="res://Assets/car200.glb" id="2_go66d"]
+[ext_resource type="Script" uid="uid://bb6cyjrtvagee" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
+[ext_resource type="PackedScene" uid="uid://bhhb8edwki3pf" path="res://Assets/car200.glb" id="2_go66d"]
 [ext_resource type="ArrayMesh" uid="uid://brqf8qmam08yh" path="res://Resources/wheel_model.tres" id="3_1sfmx"]
 
 [sub_resource type="Curve" id="Curve_go66d"]

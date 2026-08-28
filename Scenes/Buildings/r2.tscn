@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cckhykv8k1hiy" path="res://Scripts/building.gd" id="2_xn0k5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xn0k5"]
-size = Vector3(8.7, 7.8, 6)
+size = Vector3(10, 9.3, 6.7000003)
 
 [node name="r2" unique_id=1198197866 instance=ExtResource("1_61cq5")]
 script = ExtResource("2_xn0k5")
@@ -12,5 +12,5 @@ script = ExtResource("2_xn0k5")
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=664779465]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1495549305]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9, -2.3841858e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65, -2.3841858e-07)
 shape = SubResource("BoxShape3D_xn0k5")

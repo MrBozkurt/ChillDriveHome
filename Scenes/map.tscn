@@ -53,7 +53,6 @@ _shader_parameters = {
 &"noise_texture": SubResource("NoiseTexture2D_q0mm3"),
 &"projection_threshold": null
 }
-world_background = 0
 texture_filtering = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7jjh"]
@@ -115,9 +114,9 @@ texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b1hsm"]
 sky_top_color = Color(0, 0.46666667, 1, 1)
-sky_horizon_color = Color(0.9899315, 0.47718948, 0.42283884, 1)
-ground_bottom_color = Color(0.08235294, 0.8901961, 0.37254903, 1)
-ground_horizon_color = Color(0.08235294, 0.8901961, 0.37254903, 1)
+sky_horizon_color = Color(0.9882353, 0.47843137, 0.42352942, 1)
+ground_bottom_color = Color(0.39438847, 0.039450407, 0.035120815, 1)
+ground_horizon_color = Color(0.9882353, 0.47843137, 0.42352942, 1)
 
 [sub_resource type="Sky" id="Sky_aabdn"]
 sky_material = SubResource("ProceduralSkyMaterial_b1hsm")

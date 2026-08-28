@@ -4,6 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bhhb8edwki3pf" path="res://Assets/car200.glb" id="2_go66d"]
 [ext_resource type="Curve" uid="uid://c5tlvwfvcbsmr" path="res://Resources/car_power_curve.tres" id="2_yi23e"]
 [ext_resource type="ArrayMesh" uid="uid://brqf8qmam08yh" path="res://Resources/wheel_model.tres" id="3_1sfmx"]
+[ext_resource type="AudioStream" uid="uid://bpt1r8sr56vin" path="res://Assets/engine-loop-1-normalized.wav" id="5_u41r7"]
+
+[sub_resource type="Curve" id="Curve_u41r7"]
+_limits = [0.4, 0.9, 0.0, 100.0]
+_data = [Vector2(0, 0.4), 0.0, 0.044943817, 0, 0, Vector2(21.5, 0.9), 0.0, 0.0, 0, 0, Vector2(23.5, 0.64269656), 0.01610487, 0.01610487, 0, 0, Vector2(48.5, 0.9), 0.0, 0.0, 0, 0, Vector2(53, 0.63033706), 0.016523466, 0.016523466, 0, 0, Vector2(82, 0.9), 0.0, 0.0, 0, 0, Vector2(84, 0.63595504), 0.033707872, 0.033707872, 0, 0, Vector2(100, 0.9), 0.0, 0.0, 0, 0]
+point_count = 8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3nnyw"]
 size = Vector3(4.39, 1, 1.65)
@@ -14,6 +20,7 @@ center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0.1, 0)
 script = ExtResource("1_wqo35")
 power_curve = ExtResource("2_yi23e")
+engine_pitch_curve = SubResource("Curve_u41r7")
 
 [node name="car201" parent="." unique_id=1575413693 instance=ExtResource("2_go66d")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.13, 0)
@@ -83,6 +90,11 @@ one_shot = true
 [node name="PowerPenaltyCooldown" type="Timer" parent="." unique_id=1674290317]
 wait_time = 0.5
 one_shot = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=90120243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3073456, 0.45635808, 0)
+stream = ExtResource("5_u41r7")
+autoplay = true
 
 [connection signal="timeout" from="GripPenaltyCooldown" to="." method="_on_grip_penalty_cooldown_timeout"]
 [connection signal="timeout" from="PowerPenaltyCooldown" to="." method="_on_power_penalty_cooldown_timeout"]

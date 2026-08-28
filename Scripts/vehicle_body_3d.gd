@@ -12,6 +12,7 @@ extends VehicleBody3D
 @export var path_width : float = 6
 #Amount of speed difference between before collision and after collision to cause engine damage in km/h.
 @export var collision_speed = 20
+@export var engine_pitch_curve : Curve
 
 #Watch variables
 @export var speed : float = 0.0
@@ -22,6 +23,7 @@ extends VehicleBody3D
 @onready var grip_penalty_cooldown: Timer = $GripPenaltyCooldown
 @onready var power_penalty_cooldown: Timer = $PowerPenaltyCooldown
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 var can_grip_penalized : bool = true
 var can_power_penalized : bool = true
 var last_velocity : Vector3
@@ -35,6 +37,7 @@ func _physics_process(delta: float) -> void:
 	power_penalty()
 	grip_penalty()
 	speed = linear_velocity.length() * 3.6
+	audio_stream_player_3d.pitch_scale = move_toward(audio_stream_player_3d.pitch_scale, engine_pitch_curve.sample(speed), delta * 1.5) * (0.94 + power_coefficient * 0.06)
 	steering = move_toward(steering, Input.get_axis("right", "left") * deg_to_rad(max_steer), delta * steer_speed)
 	camera_pivot.rotation.y = steering / deg_to_rad(max_steer) * camera_turn
 	#Speed is multiplied with 3.6 to convert it to km/h

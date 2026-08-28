@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d3k01b0pbeo8h"]
 
-[ext_resource type="Script" uid="uid://2r6agijpq78a" path="res://Scripts/npc_car.gd" id="1_xcuj3"]
+[ext_resource type="Script" uid="uid://cf75jkarjrsww" path="res://Scripts/npc_car.gd" id="1_xcuj3"]
 
 [sub_resource type="Curve" id="Curve_quavu"]
 _limits = [0.0, 3.0, 0.0, 23.0]
@@ -27,6 +27,15 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_3nnyw"]
 material = SubResource("StandardMaterial3D_l3ikr")
 height = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l3ikr"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hb7yh"]
+size = Vector3(1.6, 1, 3.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xj5i4"]
+size = Vector3(2, 1, 2)
 
 [node name="NpcCar" type="VehicleBody3D" unique_id=1474294612]
 center_of_mass_mode = 1
@@ -88,5 +97,36 @@ visible = false
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1322065695]
 debug_enabled = true
+
+[node name="InsanityModeDetectors" type="Node3D" parent="." unique_id=559549909]
+
+[node name="BrakeCheck" type="Area3D" parent="InsanityModeDetectors" unique_id=1100263707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InsanityModeDetectors/BrakeCheck" unique_id=951405655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_l3ikr")
+disabled = true
+
+[node name="Overtake" type="Area3D" parent="InsanityModeDetectors" unique_id=1741704296]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InsanityModeDetectors/Overtake" unique_id=1028236482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -0.35)
+shape = SubResource("BoxShape3D_hb7yh")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="InsanityModeDetectors/Overtake" unique_id=1811476443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -0.35000002)
+shape = SubResource("BoxShape3D_hb7yh")
+disabled = true
+
+[node name="RearEnd" type="Area3D" parent="InsanityModeDetectors" unique_id=748443506]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InsanityModeDetectors/RearEnd" unique_id=184664499]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3.1)
+shape = SubResource("BoxShape3D_xj5i4")
+disabled = true
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_target_reached"]

@@ -4,21 +4,20 @@
 [ext_resource type="PackedScene" uid="uid://bhhb8edwki3pf" path="res://Assets/car200.glb" id="2_go66d"]
 [ext_resource type="ArrayMesh" uid="uid://brqf8qmam08yh" path="res://Resources/wheel_model.tres" id="3_1sfmx"]
 
-[sub_resource type="Curve" id="Curve_go66d"]
+[sub_resource type="Curve" id="Curve_xcuj3"]
 _limits = [0.0, 100.0, 0.0, 100.0]
-_data = [Vector2(0, 100), 0.0, -1.0, 0, 0, Vector2(100, 0), -1.0, 0.0, 1, 0]
+_data = [Vector2(0, 100), 0.0, -1.0, 0, 1, Vector2(100, 0), -1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3nnyw"]
 size = Vector3(4.39, 1, 1.65)
 
 [node name="Car" type="VehicleBody3D" unique_id=1712536071]
+collision_layer = 2
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0.1, 0)
 script = ExtResource("1_wqo35")
-STEER_SPEED = 0.8
-CAMERA_TURN = 0.0
-POWER_CURVE = SubResource("Curve_go66d")
+power_curve = SubResource("Curve_xcuj3")
 
 [node name="car201" parent="." unique_id=1575413693 instance=ExtResource("2_go66d")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.13, 0)

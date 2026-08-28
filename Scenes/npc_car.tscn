@@ -1,16 +1,7 @@
 [gd_scene format=3 uid="uid://d3k01b0pbeo8h"]
 
 [ext_resource type="Script" uid="uid://cf75jkarjrsww" path="res://Scripts/npc_car.gd" id="1_xcuj3"]
-
-[sub_resource type="Curve" id="Curve_quavu"]
-_limits = [0.0, 3.0, 0.0, 23.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(13.110001, 1.6179776), 0.37024668, 0.37024668, 0, 0, Vector2(23, 3), 0.1826087, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_xcuj3"]
-_limits = [0.0, 50.0, 0.0, 40.0]
-_data = [Vector2(0, 50), 0.0, -1.25, 0, 1, Vector2(40, 0), -1.25, 0.0, 1, 0]
-point_count = 2
+[ext_resource type="Curve" uid="uid://onbbrqjoiroh" path="res://Resources/npc_car_power_curve.tres" id="2_4yqsg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hb7yh"]
 
@@ -40,8 +31,7 @@ size = Vector3(2, 1, 2)
 [node name="NpcCar" type="VehicleBody3D" unique_id=1474294612]
 center_of_mass_mode = 1
 script = ExtResource("1_xcuj3")
-steering_curve = SubResource("Curve_quavu")
-power_curve = SubResource("Curve_xcuj3")
+power_curve = ExtResource("2_4yqsg")
 minimum_pursuit_distance = 7.0
 
 [node name="FrontMarker" type="Marker3D" parent="." unique_id=223653029]
@@ -130,3 +120,6 @@ shape = SubResource("BoxShape3D_xj5i4")
 disabled = true
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_target_reached"]
+[connection signal="body_entered" from="InsanityModeDetectors/BrakeCheck" to="." method="_on_brake_check_body_entered"]
+[connection signal="body_entered" from="InsanityModeDetectors/Overtake" to="." method="_on_overtake_body_entered"]
+[connection signal="body_entered" from="InsanityModeDetectors/RearEnd" to="." method="_on_rear_end_body_entered"]

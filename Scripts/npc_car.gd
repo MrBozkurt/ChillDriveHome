@@ -4,9 +4,9 @@ class_name NPCCar
 @export var target_pos : Marker3D
 @export var max_steering_angle : float = 23
 @export var steer_speed : float = 1.5
-@export var steering_curve : Curve
 @export var power_curve : Curve
 @export var minimum_pursuit_distance : float = 5
+@export_enum("Normal:0", "Distracted:1", "Brake Cheker:2", "Overtake preventer:3", "Rear ender:4") var insanity_level : int = 0
 
 #Those variables exist to watch whats going on with this node
 @export_category("Watching variables")
@@ -30,7 +30,21 @@ var derivative : float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	navigation_agent_3d.target_position = target_pos.global_position
-
+	var insanity := 0.8
+	if insanity < 0.5:
+		insanity_level = 0
+	elif insanity < 0.75:
+		insanity_level = 1
+	elif insanity < 0.9:
+		insanity_level = 2
+		$InsanityModeDetectors/BrakeCheck/CollisionShape3D.disabled = false
+	elif insanity < 0.95:
+		insanity_level = 3
+		$InsanityModeDetectors/Overtake/CollisionShape3D.disabled = false
+		$InsanityModeDetectors/Overtake/CollisionShape3D2.disabled = false
+	else:
+		insanity_level = 4
+		$InsanityModeDetectors/RearEnd/CollisionShape3D.disabled = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -39,27 +53,6 @@ func _process(delta: float) -> void:
 		brake = 2.0
 		engine_force = 0.0
 		steering = 0.0
-
-func self_dev_steer(delta):
-	var is_waypoint_in_front_of_car
-	var waypoint := navigation_agent_3d.get_next_path_position()
-	var front_direction : Vector3 = ($FrontMarker.global_position - global_position).normalized()
-	var waypoint_direction := (waypoint - global_position).normalized()
-	if (front_direction.dot(waypoint_direction) < 0):
-		is_waypoint_in_front_of_car = false
-	else:
-		is_waypoint_in_front_of_car = true
-	var angle_to_waypoint = rad_to_deg(front_direction.angle_to(waypoint_direction))
-	var target_steering = deg_to_rad(min(abs(angle_to_waypoint), max_steering_angle))
-	steer_speed = steering_curve.sample(rad_to_deg(target_steering))
-	if front_direction.cross(waypoint_direction).y < 0:
-		target_steering = -target_steering
-	if is_waypoint_in_front_of_car:
-		steering = move_toward(steering, target_steering, delta * steer_speed)
-		engine_force = power_curve.sample(linear_velocity.length())
-	else:
-		steering = move_toward(steering, -target_steering, delta * steer_speed)
-		engine_force = -power_curve.sample(linear_velocity.length())
 
 func pid_controller(delta: float):
 	var waypoint := pure_pursuit()
@@ -105,3 +98,15 @@ func pure_pursuit() -> Vector3:
 
 func _on_target_reached() -> void:
 	reached_destination = true
+
+
+func _on_brake_check_body_entered(_body: Node3D) -> void:
+	brake = 10
+
+
+func _on_overtake_body_entered(_body: Node3D) -> void:
+	pass # Replace with function body.
+
+
+func _on_rear_end_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.

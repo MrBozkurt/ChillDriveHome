@@ -2,12 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bb6cyjrtvagee" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
 [ext_resource type="PackedScene" uid="uid://bhhb8edwki3pf" path="res://Assets/car200.glb" id="2_go66d"]
+[ext_resource type="Curve" uid="uid://c5tlvwfvcbsmr" path="res://Resources/car_power_curve.tres" id="2_yi23e"]
 [ext_resource type="ArrayMesh" uid="uid://brqf8qmam08yh" path="res://Resources/wheel_model.tres" id="3_1sfmx"]
-
-[sub_resource type="Curve" id="Curve_xcuj3"]
-_limits = [0.0, 100.0, 0.0, 100.0]
-_data = [Vector2(0, 100), 0.0, -1.0, 0, 1, Vector2(100, 0), -1.0, 0.0, 1, 0]
-point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3nnyw"]
 size = Vector3(4.39, 1, 1.65)
@@ -17,7 +13,7 @@ collision_layer = 2
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0.1, 0)
 script = ExtResource("1_wqo35")
-power_curve = SubResource("Curve_xcuj3")
+power_curve = ExtResource("2_yi23e")
 
 [node name="car201" parent="." unique_id=1575413693 instance=ExtResource("2_go66d")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.13, 0)

@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://cjirgoqhd54cw"]
 
 [ext_resource type="PackedScene" uid="uid://dxjsvm6vdr5gp" path="res://Assets/l2.glb" id="1_iq752"]
+[ext_resource type="Script" uid="uid://cckhykv8k1hiy" path="res://Scripts/building.gd" id="2_vjnhc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vjnhc"]
 size = Vector3(8.3, 7.5, 8.400001)
 
 [node name="l2" unique_id=499889597 instance=ExtResource("1_iq752")]
+script = ExtResource("2_vjnhc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=987470282]
 

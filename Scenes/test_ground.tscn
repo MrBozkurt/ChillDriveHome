@@ -182,6 +182,3 @@ path = NodePath("../Path3D")
 
 [node name="Path3D" type="Path3D" parent="." unique_id=386617239]
 curve = SubResource("Curve3D_6h2m2")
-
-[editable path="NpcCar"]
-[editable path="Car"]

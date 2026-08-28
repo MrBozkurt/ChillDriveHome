@@ -27,15 +27,30 @@ extends VehicleBody3D
 var can_grip_penalized : bool = true
 var can_power_penalized : bool = true
 var last_velocity : Vector3
+
+# Camera
+var rotationSpeed: Vector2
+var sensitivity = 0.08
+@onready var camera: Camera3D = $CameraPivot/Camera3D
+
 func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 12
 	last_velocity = linear_velocity
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	power_penalty()
 	grip_penalty()
+	
+	# Camera
+	camera.rotation.y -= rotationSpeed.x * delta * sensitivity
+	camera.rotation.y = clampf(camera.rotation.y, -PI/1.1, PI/7)
+	var verticalRotation = clampf(camera.rotation.x - (rotationSpeed.y * delta * sensitivity), -PI/6, PI/4)
+	camera.rotation.x = verticalRotation
+	rotationSpeed = Vector2.ZERO
+	
 	speed = linear_velocity.length() * 3.6
 	audio_stream_player_3d.pitch_scale = move_toward(audio_stream_player_3d.pitch_scale, engine_pitch_curve.sample(speed), delta * 1.5) * (0.94 + power_coefficient * 0.06)
 	steering = move_toward(steering, Input.get_axis("right", "left") * deg_to_rad(max_steer), delta * steer_speed)
@@ -56,6 +71,19 @@ func _physics_process(delta: float) -> void:
 		brake = 0
 	if Input.get_action_strength("brake") > 0:
 		brake = Input.get_action_strength("brake") * brake_force * 2
+
+# Camera control
+func _input(_event):
+	if Input.is_action_just_pressed("Pause"):
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE
+	if (_event is InputEventMouseMotion) && Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		var motion : InputEventMouseMotion = _event
+		rotationSpeed = motion.screen_relative
+		
+func _unhandled_input(event):
+	if event is InputEventScreenDrag:
+		var drag : InputEventScreenDrag = event
+		rotationSpeed = drag.velocity * sensitivity
 
 func grip_penalty():
 	var closest_path_point := path.curve.get_closest_point(global_position - path.global_position) + path.global_position

@@ -613,6 +613,7 @@ mesh = ExtResource("3_1sfmx")
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=732807977]
 transform = Transform3D(-4.3515094e-08, -0.0946635, -0.9955094, -4.137876e-09, 0.99550945, -0.09466352, 1, 1.7769908e-15, -4.3711385e-08, -0.00821209, 1.0631185, -0.35828543)
 current = true
+fov = 60.0
 
 [node name="GripPenaltyCooldown" type="Timer" parent="." unique_id=38687900]
 wait_time = 5.0
@@ -626,6 +627,9 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3073456, 0.45635808, 0)
 stream = ExtResource("5_u41r7")
 autoplay = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1341081733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55385095, 1.1311414, 0)
 
 [connection signal="timeout" from="GripPenaltyCooldown" to="." method="_on_grip_penalty_cooldown_timeout"]
 [connection signal="timeout" from="PowerPenaltyCooldown" to="." method="_on_power_penalty_cooldown_timeout"]

@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://c8urwykuk8eia"]
 
-[ext_resource type="PackedScene" uid="uid://bra1doyoqm5h" path="res://Scenes/village.tscn" id="1_ci6au"]
 [ext_resource type="Script" uid="uid://bm34aeffj5v0k" path="res://Scripts/map.gd" id="1_myvm1"]
 [ext_resource type="PackedScene" uid="uid://b6rpropmlpc0d" path="res://Scenes/car.tscn" id="2_26yhd"]
 [ext_resource type="Texture2D" uid="uid://b4jwg62bmuqvb" path="res://Assets/2d/green_packed.png" id="4_q0mm3"]
@@ -164,226 +163,20 @@ glow_enabled = true
 
 [sub_resource type="Curve3D" id="Curve3D_dlo4w"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -397.19424, 5.223755, 6.50925, 0, 0, 0, 0, 0, 0, -88.761055, -0.00036621094, 2.3676019, 0, 0, 0, 0, 0, 0, -70.172066, -0.00024414063, -26.910114, 0, 0, 0, 0, 0, 0, -43.547874, -0.00036621094, -32.547802, 0, 0, 0, 0, 0, 0, -14.171898, 0.017578125, -56.651173, 0, 0, 0, 0, 0, 0, 9.680397, 0.4465332, -58.659786, 0, 0, 0, 0, 0, 0, 35.290215, 0.914917, -57.153324, 0, 0, 0, 0, 0, 0, 64.66619, 1.7459717, -62.425938, 0, 0, 0, 0, 0, 0, 92.03356, 1.2631836, -52.633945, 0, 0, 0, 0, 0, 0, 184.32925, 2.8572998, -52.000427, 0, 0, 0, 0, 0, 0, 235.67867, 4.888916, -37.444252, 0, 0, 0, 0, 0, 0, 346.0431, 7.822632, -36.647396, 0, 0, 0, 0, 0, 0, 548.08765, 7.822632, -33.264465),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1020.4143, 4.390893, -604.3036, 0, 0, 0, 0, 0, 0, -482.37097, 3.9130626, -575.0878, 0, 0, 0, 0, 0, 0, -326.349, 3.4491916, -408.1036, 0, 0, 0, 0, 0, 0, -369.02237, 2.942989, -259.52246, 0, 0, 0, 0, 0, 0, -483.01752, 2.0865066, -148.0089, 0, 0, 0, 0, 0, 0, -472.27737, 0.805074, 0.22642684, 0, 0, 0, 0, 0, 0, -88.761055, -0.00036621094, 2.3676019, 0, 0, 0, 0, 0, 0, -70.172066, -0.00024414063, -26.910114, 0, 0, 0, 0, 0, 0, -43.547874, -0.00036621094, -32.547802, 0, 0, 0, 0, 0, 0, -14.171898, 0.017578125, -56.651173, 0, 0, 0, 0, 0, 0, 9.680397, 0.4465332, -58.659786, 0, 0, 0, 0, 0, 0, 35.290215, 0.914917, -57.153324, 0, 0, 0, 0, 0, 0, 64.66619, 1.7459717, -62.425938, 0, 0, 0, 0, 0, 0, 92.03356, 1.2631836, -52.633945, 0, 0, 0, 0, 0, 0, 184.32925, 2.8572998, -52.000427, 0, 0, 0, 0, 0, 0, 235.67867, 4.888916, -37.444252, 0, 0, 0, 0, 0, 0, 346.0431, 7.822632, -36.647396, 0, 0, 0, 0, 0, 0, 548.08765, 7.822632, -33.264465),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 13
+point_count = 18
 
 [node name="Map" type="Node3D" unique_id=156900698]
 script = ExtResource("1_myvm1")
-
-[node name="Village" parent="." unique_id=62636949 instance=ExtResource("1_ci6au")]
-
-[node name="Plane_001" parent="Village" index="0" unique_id=195202590]
-visible = false
-
-[node name="CollisionShape3D" parent="Village/Plane_001/StaticBody3D" parent_id_path=PackedInt32Array(62636949, 992125648) index="0" unique_id=822633534]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.7998629)
-
-[node name="10-15-8" parent="Village" index="1" unique_id=1439807161]
-visible = false
-
-[node name="Empty" parent="Village" index="2" unique_id=571861896]
-visible = false
-
-[node name="10-15-8_002" parent="Village" index="3" unique_id=1306284803]
-visible = false
-
-[node name="10-15-8_001" parent="Village" index="4" unique_id=1208472165]
-visible = false
-
-[node name="10-15-8_004" parent="Village" index="5" unique_id=828231979]
-visible = false
-
-[node name="10-15-8_005" parent="Village" index="6" unique_id=1185248425]
-visible = false
-
-[node name="10-15-8_006" parent="Village" index="7" unique_id=1225601091]
-visible = false
-
-[node name="CollisionShape3D" parent="Village/10-15-8_006/StaticBody3D" parent_id_path=PackedInt32Array(62636949, 1984955840) index="0" unique_id=1898522715]
-visible = false
-
-[node name="10-15-8_007" parent="Village" index="8" unique_id=329360499]
-visible = false
-
-[node name="CollisionShape3D" parent="Village/10-15-8_007/StaticBody3D" parent_id_path=PackedInt32Array(62636949, 167136715) index="0" unique_id=599520174]
-visible = false
-
-[node name="10-15-8_008" parent="Village" index="9" unique_id=1031913330]
-visible = false
-
-[node name="10-15-8_009" parent="Village" index="10" unique_id=887398844]
-visible = false
-
-[node name="10-15-8_010" parent="Village" index="11" unique_id=597293278]
-visible = false
-
-[node name="10-15-8_011" parent="Village" index="12" unique_id=621861661]
-visible = false
-
-[node name="10-15-8_012" parent="Village" index="13" unique_id=889692436]
-visible = false
-
-[node name="10-15-8_013" parent="Village" index="14" unique_id=770323915]
-visible = false
-
-[node name="10-15-8_014" parent="Village" index="15" unique_id=1446682328]
-visible = false
-
-[node name="10-15-8_015" parent="Village" index="16" unique_id=1254841495]
-visible = false
-
-[node name="10-15-8_003" parent="Village" index="17" unique_id=1325237558]
-visible = false
-
-[node name="10-15-8_016" parent="Village" index="18" unique_id=1604675872]
-visible = false
-
-[node name="10-15-8_017" parent="Village" index="19" unique_id=1521208668]
-visible = false
-
-[node name="10-15-8_018" parent="Village" index="20" unique_id=1488146468]
-visible = false
-
-[node name="10-15-8_019" parent="Village" index="21" unique_id=1402230278]
-visible = false
-
-[node name="CollisionShape3D" parent="Village/10-15-8_019/StaticBody3D" parent_id_path=PackedInt32Array(62636949, 1386426188) index="0" unique_id=1046363472]
-visible = false
-
-[node name="10-15-8_020" parent="Village" index="22" unique_id=1521304824]
-visible = false
-
-[node name="10-15-8_021" parent="Village" index="23" unique_id=186468988]
-visible = false
-
-[node name="10-15-8_022" parent="Village" index="24" unique_id=1678725533]
-visible = false
-
-[node name="10-15-8_023" parent="Village" index="25" unique_id=396930472]
-visible = false
-
-[node name="10-15-8_024" parent="Village" index="26" unique_id=1764932510]
-visible = false
-
-[node name="10-15-8_025" parent="Village" index="27" unique_id=295302336]
-visible = false
-
-[node name="10-15-8_026" parent="Village" index="28" unique_id=1156742836]
-visible = false
-
-[node name="10-15-8_027" parent="Village" index="29" unique_id=872334013]
-visible = false
-
-[node name="10-15-8_028" parent="Village" index="30" unique_id=2020007316]
-visible = false
-
-[node name="10-15-8_029" parent="Village" index="31" unique_id=1027406493]
-visible = false
-
-[node name="10-15-8_030" parent="Village" index="32" unique_id=1976000968]
-visible = false
-
-[node name="10-15-8_031" parent="Village" index="33" unique_id=377364384]
-visible = false
-
-[node name="10-15-8_032" parent="Village" index="34" unique_id=1425113277]
-visible = false
-
-[node name="10-15-8_033" parent="Village" index="35" unique_id=1207404155]
-visible = false
-
-[node name="10-15-8_034" parent="Village" index="36" unique_id=610215476]
-visible = false
-
-[node name="10-15-8_035" parent="Village" index="37" unique_id=1866887307]
-visible = false
-
-[node name="CollisionShape3D" parent="Village/10-15-8_035/StaticBody3D" parent_id_path=PackedInt32Array(62636949, 2037647335) index="0" unique_id=209292481]
-visible = false
-
-[node name="10-15-8_036" parent="Village" index="38" unique_id=1484314141]
-visible = false
-
-[node name="10-15-8_037" parent="Village" index="39" unique_id=1531012832]
-visible = false
-
-[node name="10-15-8_038" parent="Village" index="40" unique_id=1509053923]
-visible = false
-
-[node name="CollisionShape3D" parent="Village/10-15-8_038/StaticBody3D" parent_id_path=PackedInt32Array(62636949, 616443319) index="0" unique_id=516599958]
-visible = false
-
-[node name="10-15-8_039" parent="Village" index="41" unique_id=207298241]
-visible = false
-
-[node name="10-15-8_040" parent="Village" index="42" unique_id=667450284]
-visible = false
-
-[node name="10-15-8_041" parent="Village" index="43" unique_id=684613573]
-visible = false
-
-[node name="10-15-8_042" parent="Village" index="44" unique_id=8740800]
-visible = false
-
-[node name="10-15-8_043" parent="Village" index="45" unique_id=1890292865]
-visible = false
-
-[node name="10-15-8_044" parent="Village" index="46" unique_id=844708842]
-visible = false
-
-[node name="10-15-8_045" parent="Village" index="47" unique_id=1492474857]
-visible = false
-
-[node name="CollisionShape3D" parent="Village/10-15-8_045/StaticBody3D" parent_id_path=PackedInt32Array(62636949, 1977449113) index="0" unique_id=1923922148]
-visible = false
-
-[node name="10-15-8_046" parent="Village" index="48" unique_id=937644130]
-visible = false
-
-[node name="10-15-8_047" parent="Village" index="49" unique_id=1223872868]
-visible = false
-
-[node name="10-15-8_048" parent="Village" index="50" unique_id=1074433943]
-visible = false
-
-[node name="10-15-8_049" parent="Village" index="51" unique_id=909802873]
-visible = false
-
-[node name="10-15-8_050" parent="Village" index="52" unique_id=181925608]
-visible = false
-
-[node name="CollisionShape3D" parent="Village/10-15-8_050/StaticBody3D" parent_id_path=PackedInt32Array(62636949, 1344697002) index="0" unique_id=619638426]
-visible = false
-
-[node name="10-15-8_051" parent="Village" index="53" unique_id=1990689027]
-visible = false
-
-[node name="10-15-8_052" parent="Village" index="54" unique_id=56169435]
-visible = false
-
-[node name="10-15-8_053" parent="Village" index="55" unique_id=1756640122]
-visible = false
-
-[node name="10-15-8_054" parent="Village" index="56" unique_id=1993260440]
-visible = false
-
-[node name="10-15-8_055" parent="Village" index="57" unique_id=1139086565]
-visible = false
-
-[node name="10-15-8_056" parent="Village" index="58" unique_id=1812796266]
-visible = false
-
-[node name="10-15-8_057" parent="Village" index="60" unique_id=1255686169]
-visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=342467860]
 transform = Transform3D(0.8244539, -0.46149307, 0.3275666, 0, 0.5788121, 0.81546104, -0.5659292, -0.67231005, 0.47720397, 0, 178, 0)
 shadow_enabled = true
 
 [node name="Car" parent="." unique_id=1712536071 node_paths=PackedStringArray("path") instance=ExtResource("2_26yhd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250.45392, -0.0004043579, 5.137108)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -977.66345, -0.0004043579, -599.2689)
 path = NodePath("../Arabanın gitmesini düşündüğüm yol")
 
 [node name="Terrain3D" type="Terrain3D" parent="." unique_id=899187983]
@@ -397,6 +190,21 @@ metadata/_edit_lock_ = true
 environment = SubResource("Environment_ntw8o")
 
 [node name="Buildings" type="Node3D" parent="." unique_id=1368592999]
+
+[node name="l91" parent="Buildings" unique_id=2133886438 instance=ExtResource("6_dlo4w")]
+transform = Transform3D(0.9942662, 0, 0.10693294, 0, 1, 0, -0.10693294, 0, 0.9942662, 269.9601, -0.021558188, -70.37842)
+
+[node name="r155" parent="Buildings" unique_id=1451551403 instance=ExtResource("10_5qtum")]
+transform = Transform3D(0.9881404, 0, 0.1535532, 0, 1, 0, -0.1535532, 0, 0.9881404, 241.53148, -0.021069907, -67.91102)
+
+[node name="r156" parent="Buildings" unique_id=46701616 instance=ExtResource("7_4c2oa")]
+transform = Transform3D(0.9850036, 0, 0.17253384, 0, 1, 0, -0.17253384, 0, 0.9850036, 255.0485, -0.021558188, -69.09108)
+
+[node name="s127" parent="Buildings" unique_id=1669060042 instance=ExtResource("6_6q3n4")]
+transform = Transform3D(0.9805205, 0, 0.19641681, 0, 1, 0, -0.19641681, 0, 0.9805205, 269.9601, -0.021558188, -59.972458)
+
+[node name="r157" parent="Buildings" unique_id=822702295 instance=ExtResource("10_5qtum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250.97194, -0.021558188, -58.899673)
 
 [node name="s113" parent="Buildings" unique_id=454871061 instance=ExtResource("6_6q3n4")]
 transform = Transform3D(0.9366082, 0, -0.35037872, 0, 1, 0, 0.35037872, 0, 0.9366082, 198.94029, -0.08007832, -38.863144)
@@ -1510,20 +1318,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.81503, -0.021069907, -54.
 
 [node name="Arabanın gitmesini düşündüğüm yol" type="Path3D" parent="." unique_id=769549031]
 curve = SubResource("Curve3D_dlo4w")
-
-[node name="l2" parent="." unique_id=2133886438 instance=ExtResource("6_dlo4w")]
-transform = Transform3D(0.9942662, 0, 0.10693294, 0, 1, 0, -0.10693294, 0, 0.9942662, 269.9601, -0.021558188, -70.37842)
-
-[node name="r1" parent="." unique_id=1451551403 instance=ExtResource("10_5qtum")]
-transform = Transform3D(0.9881404, 0, 0.1535532, 0, 1, 0, -0.1535532, 0, 0.9881404, 241.53148, -0.021069907, -67.91102)
-
-[node name="r2" parent="." unique_id=46701616 instance=ExtResource("7_4c2oa")]
-transform = Transform3D(0.9850036, 0, 0.17253384, 0, 1, 0, -0.17253384, 0, 0.9850036, 255.0485, -0.021558188, -69.09108)
-
-[node name="s2" parent="." unique_id=1669060042 instance=ExtResource("6_6q3n4")]
-transform = Transform3D(0.9805205, 0, 0.19641681, 0, 1, 0, -0.19641681, 0, 0.9805205, 269.9601, -0.021558188, -59.972458)
-
-[node name="r3" parent="." unique_id=822702295 instance=ExtResource("10_5qtum")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250.97194, -0.021558188, -58.899673)
-
-[editable path="Village"]

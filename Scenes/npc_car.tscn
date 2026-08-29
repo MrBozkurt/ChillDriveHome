@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://d3k01b0pbeo8h"]
 
-[ext_resource type="Script" uid="uid://cf75jkarjrsww" path="res://Scripts/npc_car.gd" id="1_xcuj3"]
+[ext_resource type="Script" uid="uid://2r6agijpq78a" path="res://Scripts/npc_car.gd" id="1_xcuj3"]
 [ext_resource type="Curve" uid="uid://onbbrqjoiroh" path="res://Resources/npc_car_power_curve.tres" id="2_4yqsg"]
-[ext_resource type="PackedScene" uid="uid://bhhb8edwki3pf" path="res://Assets/car200.glb" id="3_puskb"]
-[ext_resource type="PackedScene" uid="uid://d3vv0jwa8b3dn" path="res://Assets/wheel.glb" id="4_6ksln"]
+[ext_resource type="PackedScene" uid="uid://bpu37fa2qhugt" path="res://Assets/car200.glb" id="3_puskb"]
+[ext_resource type="Script" uid="uid://ckuug7jp2nidc" path="res://Scripts/rainbow_cars.gd" id="4_4e340"]
+[ext_resource type="PackedScene" uid="uid://b0dwkpys1uye0" path="res://Assets/wheel.glb" id="4_6ksln"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3nnyw"]
 size = Vector3(1.6, 0.90000004, 4.1)
@@ -28,6 +29,7 @@ minimum_pursuit_distance = 7.0
 
 [node name="car200" parent="." unique_id=850769686 instance=ExtResource("3_puskb")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.1, 0)
+script = ExtResource("4_4e340")
 
 [node name="FrontMarker" type="Marker3D" parent="." unique_id=223653029]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)

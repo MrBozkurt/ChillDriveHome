@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b0t0kvxoa8n87"]
+
+[ext_resource type="PackedScene" uid="uid://dbjmjpqm3x3qb" path="res://Assets/road_sign.glb" id="1_bxjqb"]
+
+[sub_resource type="FontVariation" id="FontVariation_r1mp4"]
+variation_embolden = 0.47
+
+[node name="road_sign" unique_id=716306863 instance=ExtResource("1_bxjqb")]
+
+[node name="Label3D" type="Label3D" parent="." index="1" unique_id=2126867071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2237465, 0.085843995)
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(1, 1, 1, 0)
+text = "ROAD
+WORK
+AHEAD	"
+font = SubResource("FontVariation_r1mp4")

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://gt652prbkik2"]
+
+[ext_resource type="PackedScene" uid="uid://cwf80khj5j1yr" path="res://Assets/road_closed_sign.glb" id="1_ul8qg"]
+
+[sub_resource type="FontVariation" id="FontVariation_613hw"]
+variation_embolden = 0.47
+
+[node name="road_closed_sign" unique_id=993954401 instance=ExtResource("1_ul8qg")]
+
+[node name="road_closed_sign" parent="." index="0" unique_id=588437756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Label3D" type="Label3D" parent="." index="1" unique_id=1784432881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.005640492)
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(1, 1, 1, 0)
+text = "ROAD
+CLOSED"
+font = SubResource("FontVariation_613hw")

@@ -129,7 +129,7 @@ transform = Transform3D(-0.866024, -0.284613, 0.411094, 0, 0.822183, 0.569223, -
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=345754730 node_paths=PackedStringArray("range_source")]
-transform = Transform3D(1, 0, 0, 0, 0.920791, 0.390056, 0, -0.390056, 0.920791, 0, 16.0268, 9.35501)
+transform = Transform3D(1, 0, 0, 0, 0.92079115, 0.39005607, 0, -0.39005607, 0.92079115, 251.8375, 16.0268, 9.35501)
 current = true
 script = ExtResource("1_510rr")
 range_source = NodePath("../RoadManager")
@@ -198,6 +198,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3651, -3.8147e-06, -56.673
 
 [node name="RoadActor7" parent="RoadManager/LaneChange" unique_id=1445599970 instance=ExtResource("4_5p3l5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.65714, -3.8147e-06, -59.9074)
+
+[node name="RoadActor" parent="RoadManager/LaneChange" unique_id=204629829 instance=ExtResource("4_5p3l5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.472031, 0.009477063, -12.190462)
 
 [node name="Collisions" type="Node3D" parent="RoadManager" unique_id=1087835447]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
@@ -389,6 +392,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -197.178)
 
 [node name="roundabout_2x2" parent="RoadManager/PrefabIntersections" unique_id=827957930 instance=ExtResource("19_i0f1k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, -225.749)
+
+[node name="RoadActor" parent="RoadManager/PrefabIntersections" unique_id=802252591 instance=ExtResource("4_5p3l5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.72116, 0.009477063, -4.6433077)
+drive_state = 2
 
 [node name="ConnectedPrefab" type="Node3D" parent="RoadManager" unique_id=1395686864]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 340, 0, 0)

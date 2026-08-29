@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://xx86fsgp28xc"]
+
+[ext_resource type="PackedScene" uid="uid://bkn2m172fyaj" path="res://Assets/road_closed.glb" id="1_vwev2"]
+
+[node name="road_closed2" unique_id=206228011 instance=ExtResource("1_vwev2")]
+
+[node name="road_closed" parent="." index="0" unique_id=1532827375]
+transform = Transform3D(0.045, 0, 0, 0, 1.566, 0, 0, 0, 0.045, 0, 0, 0)

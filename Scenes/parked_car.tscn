@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bd6r0ph3u5q8w"]
 
 [ext_resource type="PackedScene" uid="uid://bpu37fa2qhugt" path="res://Assets/car200.glb" id="1_xaa2j"]
+[ext_resource type="Script" uid="uid://ckuug7jp2nidc" path="res://Scripts/rainbow_cars.gd" id="2_if8ij"]
 [ext_resource type="ArrayMesh" uid="uid://brqf8qmam08yh" path="res://Resources/wheel_model.tres" id="2_q1i87"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyv5c"]
@@ -157,6 +158,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_s3057")
 
 [node name="car200" unique_id=1561599213 instance=ExtResource("1_xaa2j")]
+script = ExtResource("2_if8ij")
 
 [node name="car_002" parent="." index="0" unique_id=1568020431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.080751784, -0.10222256, -3.3185175e-32)

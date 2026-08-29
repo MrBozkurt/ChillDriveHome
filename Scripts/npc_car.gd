@@ -50,6 +50,7 @@ func _ready() -> void:
 	else:
 		insanity_level = 4
 		$InsanityModeDetectors/RearEnd/CollisionShape3D.disabled = false
+	set_physics_process(false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -129,3 +130,7 @@ func _on_rear_end_body_entered(body: Node3D) -> void:
 	$VehicleWheel3D2.wheel_friction_slip = 100
 	$VehicleWheel3D3.wheel_friction_slip = 100
 	$VehicleWheel3D4.wheel_friction_slip = 100
+
+
+func _on_activation_body_entered(body: Node3D) -> void:
+	set_physics_process(true)

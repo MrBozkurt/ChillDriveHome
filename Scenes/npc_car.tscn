@@ -28,6 +28,9 @@ size = Vector3(1.6, 1, 3.3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xj5i4"]
 size = Vector3(3, 1, 6)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_3nnyw"]
+radius = 100.0
+
 [node name="NpcCar" type="VehicleBody3D" unique_id=1474294612]
 center_of_mass_mode = 1
 script = ExtResource("1_xcuj3")
@@ -123,7 +126,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5.1)
 shape = SubResource("BoxShape3D_xj5i4")
 disabled = true
 
+[node name="Activation" type="Area3D" parent="." unique_id=597484228]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Activation" unique_id=1481171361]
+shape = SubResource("SphereShape3D_3nnyw")
+
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_target_reached"]
 [connection signal="body_entered" from="InsanityModeDetectors/BrakeCheck" to="." method="_on_brake_check_body_entered"]
 [connection signal="body_entered" from="InsanityModeDetectors/Overtake" to="." method="_on_overtake_body_entered"]
 [connection signal="body_entered" from="InsanityModeDetectors/RearEnd" to="." method="_on_rear_end_body_entered"]
+[connection signal="body_entered" from="Activation" to="." method="_on_activation_body_entered"]

@@ -1,12 +1,13 @@
 extends VehicleBody3D
 class_name NPCCar
 
-@export var target_pos : Marker3D
+@export var target_positions : Path3D
 @export var max_steering_angle : float = 23
 @export var steer_speed : float = 1.5
 @export var power_curve : Curve
 @export var minimum_pursuit_distance : float = 5
 @export_enum("Normal:0", "Distracted:1", "Brake Cheker:2", "Overtake preventer:3", "Rear ender:4") var insanity_level : int = 0
+@export var current_target_index : int = 0
 
 #Those variables exist to watch whats going on with this node
 @export_category("Watching variables")
@@ -32,7 +33,7 @@ var derivative : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	navigation_agent_3d.target_position = target_pos.global_position
+	navigation_agent_3d.target_position = target_positions.curve.get_point_position(current_target_index)
 	var insanity := randf()
 	if insanity < 0.5:
 		insanity_level = 0
@@ -63,6 +64,11 @@ func _physics_process(delta: float) -> void:
 		steering = 0.0
 
 func pid_controller(delta: float):
+	if navigation_agent_3d.distance_to_target() < minimum_pursuit_distance:
+		current_target_index += 1
+		if current_target_index < target_positions.curve.point_count:
+			var target_pos = target_positions.curve.get_point_position(current_target_index)
+			navigation_agent_3d.target_position = target_pos
 	var waypoint := pure_pursuit()
 	var front_direction : Vector3 = ($FrontMarker.global_position - global_position).normalized()
 	var waypoint_direction := (waypoint - global_position).normalized()
@@ -108,7 +114,12 @@ func pure_pursuit() -> Vector3:
 	return current_waypoint
 
 func _on_target_reached() -> void:
-	reached_destination = true
+	current_target_index += 1
+	if current_target_index >= target_positions.curve.point_count:
+		reached_destination = true
+	else:
+		var target_pos = target_positions.curve.get_point_position(current_target_index)
+		navigation_agent_3d.target_position = target_pos
 
 
 func _on_brake_check_body_entered(_body: Node3D) -> void:

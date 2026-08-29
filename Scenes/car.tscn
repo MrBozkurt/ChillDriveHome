@@ -1,13 +1,15 @@
 [gd_scene format=4 uid="uid://b6rpropmlpc0d"]
 
-[ext_resource type="Script" uid="uid://bf44ibcmroqpd" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
+[ext_resource type="Script" uid="uid://bb6cyjrtvagee" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
 [ext_resource type="Curve" uid="uid://c5tlvwfvcbsmr" path="res://Resources/car_power_curve.tres" id="2_yi23e"]
 [ext_resource type="ArrayMesh" uid="uid://brqf8qmam08yh" path="res://Resources/wheel_model.tres" id="3_1sfmx"]
-[ext_resource type="PackedScene" uid="uid://dtdac7qqcosg1" path="res://Assets/car200player.glb" id="3_u41r7"]
+[ext_resource type="PackedScene" uid="uid://3vbr53gswx1a" path="res://Assets/car200player.glb" id="3_u41r7"]
 [ext_resource type="AudioStream" uid="uid://bpt1r8sr56vin" path="res://Assets/engine-loop-1-normalized.wav" id="5_u41r7"]
 [ext_resource type="AudioStream" uid="uid://c74v62ksobm2h" path="res://Assets/346299__pauliusi__car-crash_ext.wav" id="6_aky6y"]
 [ext_resource type="AudioStream" uid="uid://ddd5gr6vqby58" path="res://Assets/scratch.wav" id="7_aqss3"]
-[ext_resource type="PackedScene" uid="uid://daaix1an6susu" path="res://Assets/direksiyon.glb" id="8_y3wrf"]
+[ext_resource type="PackedScene" uid="uid://q3sf8kqmnc2p" path="res://Scenes/steering_wheel.tscn" id="8_y3wrf"]
+[ext_resource type="Texture2D" uid="uid://docp6p7kdlmqr" path="res://Assets/2d/takometre.png" id="9_lh2yg"]
+[ext_resource type="Texture2D" uid="uid://c6uiie7piw0qs" path="res://Assets/2d/indicator.png" id="10_6c0gb"]
 
 [sub_resource type="Curve" id="Curve_u41r7"]
 _limits = [0.4, 0.9, 0.0, 100.0]
@@ -393,7 +395,7 @@ engine_pitch_curve = SubResource("Curve_u41r7")
 [node name="car200player" parent="." unique_id=1119539591 instance=ExtResource("3_u41r7")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.13, 0)
 
-[node name="car_003" parent="car200player" index="0" unique_id=996744733]
+[node name="car_003" parent="car200player" index="0" unique_id=1144752042]
 mesh = SubResource("ArrayMesh_y3wrf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=760345495]
@@ -480,8 +482,19 @@ autoplay = true
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1341081733]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55385095, 1.1311414, 0)
 
-[node name="direksiyon" parent="." unique_id=1883205914 instance=ExtResource("8_y3wrf")]
-transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, 0.5717476, 0.71192324, -0.4192124)
+[node name="SteeringWheel" parent="." unique_id=1577915750 instance=ExtResource("8_y3wrf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.572, 0.712, -0.419)
+
+[node name="Speedometer" type="Sprite3D" parent="." unique_id=274970449]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.585, 0.81110454, -0.425)
+pixel_size = 0.0002
+texture = ExtResource("9_lh2yg")
+
+[node name="SpeedIndicator" type="Sprite3D" parent="." unique_id=83167458]
+transform = Transform3D(2.2513026e-08, -3.7467974e-08, 1, -0.8571673, -0.515038, 0, 0.515038, -0.8571673, -4.371139e-08, 0.585, 0.79907227, -0.425)
+offset = Vector2(0, 87.5)
+pixel_size = 0.0002
+texture = ExtResource("10_6c0gb")
 
 [connection signal="timeout" from="GripPenaltyCooldown" to="." method="_on_grip_penalty_cooldown_timeout"]
 [connection signal="timeout" from="PowerPenaltyCooldown" to="." method="_on_power_penalty_cooldown_timeout"]

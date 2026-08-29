@@ -26,6 +26,8 @@ extends VehicleBody3D
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $EngineSound
 @onready var crash: AudioStreamPlayer3D = $Crash
 @onready var scratch: AudioStreamPlayer3D = $Scratch
+@onready var speed_indicator: Sprite3D = $SpeedIndicator
+@onready var steering_wheel: Node3D = $SteeringWheel
 var can_grip_penalized : bool = true
 var can_power_penalized : bool = true
 var last_velocity : Vector3
@@ -55,8 +57,10 @@ func _physics_process(delta: float) -> void:
 	rotationSpeed = Vector2.ZERO
 	
 	speed = linear_velocity.length() * 3.6
+	speed_indicator.rotation.z = deg_to_rad(speed / 80 * 242 - 121)
 	audio_stream_player_3d.pitch_scale = move_toward(audio_stream_player_3d.pitch_scale, engine_pitch_curve.sample(speed), delta * 1.5) * (0.94 + power_coefficient * 0.06)
 	steering = move_toward(steering, Input.get_axis("right", "left") * deg_to_rad(max_steer), delta * steer_speed)
+	steering_wheel.rotation.z = -steering / max_steer * 450
 	camera_pivot.rotation.y = steering / deg_to_rad(max_steer) * camera_turn
 	#Speed is multiplied with 3.6 to convert it to km/h
 	var front_vector := global_basis * Vector3.RIGHT

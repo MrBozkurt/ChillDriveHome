@@ -43,6 +43,12 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 28
 text = "Continue"
 
+[node name="btnPlayAgain" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1976509267]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 28
+text = "Play Again"
+
 [node name="btnExit" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1528172851]
 layout_mode = 2
 size_flags_vertical = 3
@@ -113,5 +119,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
 [connection signal="pressed" from="PauseMenu/VBoxContainer/btnContinue" to="." method="_on_btn_continue_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/btnPlayAgain" to="." method="_on_btn_play_again_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/btnExit" to="." method="_on_btn_exit_pressed"]
+[connection signal="pressed" from="EndGame/VBoxContainer/HBoxContainer/VBoxContainer/btnPlayAgain" to="." method="_on_btn_play_again_pressed"]
 [connection signal="pressed" from="EndGame/VBoxContainer/HBoxContainer/VBoxContainer/btnExit" to="." method="_on_btn_exit_pressed"]

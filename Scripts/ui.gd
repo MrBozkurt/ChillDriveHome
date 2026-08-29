@@ -17,3 +17,8 @@ func _on_btn_continue_pressed() -> void:
 
 func _on_btn_exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_btn_play_again_pressed() -> void:
+	get_tree().paused = false
+	get_parent().get_tree().reload_current_scene()

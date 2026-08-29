@@ -629,6 +629,7 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3073456, 0.45635808, 0)
 stream = ExtResource("5_u41r7")
 volume_db = -16.449
+pitch_scale = 0.4
 autoplay = true
 
 [node name="Crash" type="AudioStreamPlayer3D" parent="." unique_id=195653107]

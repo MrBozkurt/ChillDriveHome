@@ -81,8 +81,6 @@ func _physics_process(delta: float) -> void:
 
 # Camera control
 func _input(_event):
-	if Input.is_action_just_pressed("Pause"):
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE
 	if (_event is InputEventMouseMotion) && Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		var motion : InputEventMouseMotion = _event
 		rotationSpeed = motion.screen_relative

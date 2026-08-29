@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://hlbgp6yyr2vm"]
 
+[ext_resource type="Script" uid="uid://dpca3ks04gp2a" path="res://Scripts/ui.gd" id="1_jxero"]
+
 [node name="UI" type="CanvasLayer" unique_id=568605741]
+script = ExtResource("1_jxero")
 
 [node name="PauseMenu" type="Control" parent="." unique_id=1257784032]
+process_mode = 2
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -33,19 +37,20 @@ text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="PauseMenu/VBoxContainer" unique_id=821447786]
+[node name="btnContinue" type="Button" parent="PauseMenu/VBoxContainer" unique_id=821447786]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 28
 text = "Continue"
 
-[node name="Button2" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1528172851]
+[node name="btnExit" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1528172851]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 28
 text = "Exit"
 
 [node name="EndGame" type="Control" parent="." unique_id=1947861775]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,7 +77,7 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.7
 theme_override_font_sizes/font_size = 32
-text = "You managed to get home"
+text = "You managed to get home!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -90,13 +95,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="EndGame/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=793696666]
+[node name="btnPlayAgain" type="Button" parent="EndGame/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=793696666]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 28
-text = "Continue"
+text = "Play Again"
 
-[node name="Button2" type="Button" parent="EndGame/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1879140078]
+[node name="btnExit" type="Button" parent="EndGame/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1879140078]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 28
@@ -106,3 +111,7 @@ text = "Exit"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
+
+[connection signal="pressed" from="PauseMenu/VBoxContainer/btnContinue" to="." method="_on_btn_continue_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/btnExit" to="." method="_on_btn_exit_pressed"]
+[connection signal="pressed" from="EndGame/VBoxContainer/HBoxContainer/VBoxContainer/btnExit" to="." method="_on_btn_exit_pressed"]

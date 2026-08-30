@@ -34,17 +34,18 @@ var derivative : float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	navigation_agent_3d.target_position = target_positions.curve.get_point_position(current_target_index)
+	
 	var insanity := randf()
-	if insanity < 0.5:
+	if insanity < 0.3:
 		insanity_level = 0
-	elif insanity < 0.75:
+	elif insanity < 0.5:
 		insanity_level = 1
 		kd += 1.5
 		minimum_pursuit_distance = 0
-	elif insanity < 0.9:
+	elif insanity < 0.7:
 		insanity_level = 2
 		$InsanityModeDetectors/BrakeCheck/CollisionShape3D.disabled = false
-	elif insanity < 0.95:
+	elif insanity < 0.9:
 		insanity_level = 3
 		$InsanityModeDetectors/Overtake/CollisionShape3D.disabled = false
 		$InsanityModeDetectors/Overtake/CollisionShape3D2.disabled = false
@@ -97,7 +98,7 @@ func pid_controller(delta: float):
 	
 	steering = move_toward(steering, target_steering, delta * steer_speed)
 	if full_gas_mode:
-		engine_force = 1000
+		engine_force = 100
 	else:
 		engine_force = power_curve.sample(linear_velocity.length())
 
@@ -122,7 +123,7 @@ func _on_target_reached() -> void:
 		navigation_agent_3d.target_position = target_pos
 
 
-func _on_brake_check_body_entered(_body: Node3D) -> void:
+func _on_brake_check_body_entered(_body: Node3D) -> void:	
 	brake = 10
 
 
@@ -137,10 +138,10 @@ func _on_rear_end_body_entered(body: Node3D) -> void:
 	tracking_mode = true
 	tracked_target = body
 	full_gas_mode = true
-	$VehicleWheel3D.wheel_friction_slip = 100
-	$VehicleWheel3D2.wheel_friction_slip = 100
-	$VehicleWheel3D3.wheel_friction_slip = 100
-	$VehicleWheel3D4.wheel_friction_slip = 100
+	$VehicleWheel3D.wheel_friction_slip = 50
+	$VehicleWheel3D2.wheel_friction_slip = 50
+	$VehicleWheel3D3.wheel_friction_slip = 50
+	$VehicleWheel3D4.wheel_friction_slip = 50
 
 
 func _on_activation_body_entered(body: Node3D) -> void:

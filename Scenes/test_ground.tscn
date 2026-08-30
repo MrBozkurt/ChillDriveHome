@@ -43,9 +43,9 @@ point_count = 16
 [node name="Marker3D" type="Marker3D" parent="." unique_id=952681691]
 transform = Transform3D(-0.8582276, -0.5132693, 0, 0.5132693, -0.8582276, 0, 0, 0, 1, 194.93219, 0, -37.646683)
 
-[node name="NpcCar" parent="." unique_id=1474294612 node_paths=PackedStringArray("target_pos") instance=ExtResource("1_quavu")]
+[node name="NpcCar" parent="." unique_id=1474294612 node_paths=PackedStringArray("target_positions") instance=ExtResource("1_quavu")]
 transform = Transform3D(0.9986269, 0, 0.05238831, 0, 1, 0, -0.05238831, 0, 0.9986269, 196.4081, 0.5, 52.47235)
-target_pos = NodePath("../Marker3D")
+target_positions = NodePath("../Path3D")
 steer_speed = 1.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=363036233]

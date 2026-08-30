@@ -1,15 +1,17 @@
 [gd_scene format=4 uid="uid://b6rpropmlpc0d"]
 
-[ext_resource type="Script" uid="uid://bb6cyjrtvagee" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
+[ext_resource type="Script" uid="uid://bf44ibcmroqpd" path="res://Scripts/vehicle_body_3d.gd" id="1_wqo35"]
 [ext_resource type="Curve" uid="uid://c5tlvwfvcbsmr" path="res://Resources/car_power_curve.tres" id="2_yi23e"]
 [ext_resource type="ArrayMesh" uid="uid://brqf8qmam08yh" path="res://Resources/wheel_model.tres" id="3_1sfmx"]
-[ext_resource type="PackedScene" uid="uid://3vbr53gswx1a" path="res://Assets/car200player.glb" id="3_u41r7"]
+[ext_resource type="PackedScene" uid="uid://dtdac7qqcosg1" path="res://Assets/car200player.glb" id="3_u41r7"]
 [ext_resource type="AudioStream" uid="uid://bpt1r8sr56vin" path="res://Assets/engine-loop-1-normalized.wav" id="5_u41r7"]
 [ext_resource type="AudioStream" uid="uid://c74v62ksobm2h" path="res://Assets/346299__pauliusi__car-crash_ext.wav" id="6_aky6y"]
 [ext_resource type="AudioStream" uid="uid://ddd5gr6vqby58" path="res://Assets/scratch.wav" id="7_aqss3"]
 [ext_resource type="PackedScene" uid="uid://q3sf8kqmnc2p" path="res://Scenes/steering_wheel.tscn" id="8_y3wrf"]
 [ext_resource type="Texture2D" uid="uid://docp6p7kdlmqr" path="res://Assets/2d/takometre.png" id="9_lh2yg"]
 [ext_resource type="Texture2D" uid="uid://c6uiie7piw0qs" path="res://Assets/2d/indicator.png" id="10_6c0gb"]
+[ext_resource type="Texture2D" uid="uid://cayvxm0yj54en" path="res://Assets/2d/oil.png" id="10_15bpq"]
+[ext_resource type="Texture2D" uid="uid://c0j34fy0dh12v" path="res://Assets/2d/heat.png" id="11_7dpuy"]
 
 [sub_resource type="Curve" id="Curve_u41r7"]
 _limits = [0.4, 0.9, 0.0, 100.0]
@@ -384,6 +386,27 @@ shadow_mesh = SubResource("ArrayMesh_dv5va")
 [sub_resource type="BoxShape3D" id="BoxShape3D_3nnyw"]
 size = Vector3(4.39, 1, 1.65)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_af8kn"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.29954746, 0.29954746, 0.29954743, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_gc3ka"]
+material = SubResource("StandardMaterial3D_af8kn")
+radius = 0.03
+height = 0.06
+radial_segments = 16
+rings = 8
+
+[sub_resource type="Curve" id="Curve_15bpq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.42477876), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_7dpuy"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_pkuty"]
+
 [node name="Car" type="VehicleBody3D" unique_id=1712536071]
 collision_layer = 2
 center_of_mass_mode = 1
@@ -395,7 +418,7 @@ engine_pitch_curve = SubResource("Curve_u41r7")
 [node name="car200player" parent="." unique_id=1119539591 instance=ExtResource("3_u41r7")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.13, 0)
 
-[node name="car_003" parent="car200player" index="0" unique_id=1144752042]
+[node name="car_003" parent="car200player" index="0" unique_id=996744733]
 mesh = SubResource("ArrayMesh_y3wrf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=760345495]
@@ -490,11 +513,40 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.58
 pixel_size = 0.0002
 texture = ExtResource("9_lh2yg")
 
+[node name="Oilometer" type="Sprite3D" parent="." unique_id=2099318786]
+transform = Transform3D(-3.409488e-08, 0, -0.78, 0, 0.78, 0, 0.78, 0, -3.409488e-08, 0.585, 0.81110454, -0.28533864)
+pixel_size = 0.0002
+texture = ExtResource("10_15bpq")
+
+[node name="Temperometer" type="Sprite3D" parent="." unique_id=1934993107]
+transform = Transform3D(-3.409488e-08, 0, -0.78, 0, 0.78, 0, 0.78, 0, -3.409488e-08, 0.585, 0.811, -0.565798)
+pixel_size = 0.0002
+texture = ExtResource("11_7dpuy")
+
 [node name="SpeedIndicator" type="Sprite3D" parent="." unique_id=83167458]
 transform = Transform3D(2.2513026e-08, -3.7467974e-08, 1, -0.8571673, -0.515038, 0, 0.515038, -0.8571673, -4.371139e-08, 0.585, 0.79907227, -0.425)
 offset = Vector2(0, 87.5)
 pixel_size = 0.0002
 texture = ExtResource("10_6c0gb")
+
+[node name="Smoke" type="CPUParticles3D" parent="." unique_id=809251847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5208824, 0.47098547, 0)
+emitting = false
+lifetime = 2.0
+randomness = 0.5
+local_coords = true
+mesh = SubResource("SphereMesh_gc3ka")
+emission_shape = 3
+emission_box_extents = Vector3(0.39, 0.125, 0.8)
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 0.1, 0)
+linear_accel_min = 0.5
+linear_accel_max = 1.5
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_15bpq")
+color_ramp = SubResource("Gradient_7dpuy")
+color_initial_ramp = SubResource("Gradient_pkuty")
+hue_variation_max = 0.37
 
 [connection signal="timeout" from="GripPenaltyCooldown" to="." method="_on_grip_penalty_cooldown_timeout"]
 [connection signal="timeout" from="PowerPenaltyCooldown" to="." method="_on_power_penalty_cooldown_timeout"]

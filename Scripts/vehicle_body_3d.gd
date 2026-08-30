@@ -1,5 +1,7 @@
 extends VehicleBody3D
 
+signal home
+
 #Max steer angle in degrees
 @export var max_steer : float = 23
 @export var steer_speed : float = 0.5
@@ -37,6 +39,8 @@ var rotationSpeed: Vector2
 var sensitivity = 0.08
 @onready var camera: Camera3D = $CameraPivot/Camera3D
 
+@onready var smoke: CPUParticles3D = $Smoke
+
 func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 12
@@ -48,6 +52,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	power_penalty()
 	grip_penalty()
+	smoke.initial_velocity_min = speed/10
 	
 	# Camera
 	camera.rotation.y -= rotationSpeed.x * delta * sensitivity
@@ -111,6 +116,8 @@ func power_penalty():
 			power_coefficient *= 0.75
 			can_power_penalized = false
 			power_penalty_cooldown.start()
+			smoke.emitting = true
+			smoke.amount *= 2
 	if (acceleration * 3.6) < collision_speed && get_contact_count() > 0 && speed > 1:
 		scratch.stream_paused = false
 	else:
@@ -122,3 +129,8 @@ func _on_grip_penalty_cooldown_timeout() -> void:
 
 func _on_power_penalty_cooldown_timeout() -> void:
 	can_power_penalized = true
+
+
+func _on_home_body_entered(body: Node3D) -> void:
+	if (body.is_in_group("Car")):
+		home.emit()
